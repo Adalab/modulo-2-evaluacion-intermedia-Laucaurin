@@ -7,9 +7,9 @@ const clue = document.querySelector('.js__clue');
 const textCounter = document.querySelector('.js__counter');
 
 
-//Counters
+//Counters & random number
 let counter = 0;
-
+const randomNumber = getRandomNumber(100);
 
 //Functions
 function getRandomNumber(max) {
@@ -19,12 +19,9 @@ function getRandomNumber(max) {
 function attemptsCounter() {
     counter++
     textCounter.innerHTML = `Número de intentos: ${counter}`;
-
 }
 
-//comparacion de numeros
 function compareNumber() {
-    const randomNumber = getRandomNumber(100);
     const userNumber = parseInt(userNumberinput.value);
     if (userNumber === randomNumber) {
         clue.innerHTML = 'Has ganado campeona!!';
@@ -40,12 +37,10 @@ function compareNumber() {
     }
 }
 
-
 function handleClickButton(event) {
     event.preventDefault();
     compareNumber();
 }
 
-
-//Events
+//Event
 btn.addEventListener('click', handleClickButton);
