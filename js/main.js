@@ -4,7 +4,7 @@
 const userNumberInput = document.querySelector('.js__user_number_input');
 const btn = document.querySelector('.js__button');
 const clueParagraph = document.querySelector('.js__clue_paragraph');
-const counterParagraph = document.querySelector('.js__counter_paragraph');
+const counterTries = document.querySelector('.js__counter_tries');
 
 
 //Counters & random number
@@ -18,22 +18,25 @@ function getRandomNumber(max) {
 
 function attemptsCounter() {
     counter++
-    counterParagraph.innerHTML = `Número de intentos: ${counter}`;
+    counterTries.innerHTML = counter;
+}
+function writeClueText(msj) {
+    clueParagraph.innerHTML = msj;
 }
 
 function compareNumber() {
     const userNumber = parseInt(userNumberInput.value);
+    attemptsCounter()
     if (userNumber === randomNumber) {
-        clueParagraph.innerHTML = 'Has ganado campeona!!';
+        writeClueText('Has ganado campeona!!');
     } else if (userNumber < 1 || userNumber > 100) {
-        clueParagraph.innerHTML = 'El número debe estar entre 1 y 100';
-        attemptsCounter();
+        writeClueText('El número debe estar entre 1 y 100');
+
     } else if (userNumber > randomNumber) {
-        clueParagraph.innerHTML = 'Demasiado alto';
-        attemptsCounter();
+        writeClueText('Demasiado alto');
+
     } else if (userNumber < randomNumber) {
-        clueParagraph.innerHTML = 'Demasiado bajo';
-        attemptsCounter();
+        writeClueText('Demasiado bajo');
     }
 }
 
